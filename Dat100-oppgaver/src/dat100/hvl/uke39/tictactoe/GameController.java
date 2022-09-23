@@ -117,35 +117,23 @@ public class GameController {
 		int x_shift_needed = board[0].length - TicTacToe.LENGDE_KRAV;
 		int y_shift_needed = board.length - TicTacToe.LENGDE_KRAV;
 
-		for (int y_shift = 0; y_shift < y_shift_needed; y_shift++) {
-			for (int x_shift = 0; x_shift < x_shift_needed; x_shift++) {
-				char[][] checkBoard = shift(board, x_shift, y_shift);
-
-				// Skjekk diagnal \
-				int likeEtterHverandre = 0;
-				for (int i = 0; i < checkBoard.length; i++) {
-					if (checkBoard[i][i] == player) {
-						likeEtterHverandre++;
-					} else {
-						likeEtterHverandre = 0;
+		if (TicTacToe.LENGDE_KRAV == TicTacToe.SIZE) {
+			if (diagonal(board, player)) {
+				return true;
+			}
+			return false;
+		} else {
+			for (int y_shift = 0; y_shift < y_shift_needed; y_shift++) {
+				for (int x_shift = 0; x_shift < x_shift_needed; x_shift++) {
+					char[][] checkBoard = shift(board, x_shift, y_shift);
+					if (diagonal(checkBoard, player)) {
+						return true;
 					}
-				}
-
-				// Skjekk diagonal /
-				int likeEtterHverandre2 = 0;
-				for (int i = 0; i < checkBoard.length; i++) {
-					if (checkBoard[i][checkBoard.length - 1 - i] == player) {
-						likeEtterHverandre2++;
-					} else {
-						likeEtterHverandre2 = 0;
-					}
-				}
-				if (likeEtterHverandre == TicTacToe.LENGDE_KRAV || likeEtterHverandre2 == TicTacToe.LENGDE_KRAV) {
-					return true;
 				}
 			}
+			return false;
 		}
-		return false;
+
 	}
 
 	/**
@@ -162,6 +150,32 @@ public class GameController {
 			}
 		}
 		return tempBoard;
+	}
+
+	private boolean diagonal(char[][] board, char player) {
+		// Skjekk diagnal \
+		int likeEtterHverandre = 0;
+		for (int i = 0; i < board.length; i++) {
+			if (board[i][i] == player) {
+				likeEtterHverandre++;
+			} else {
+				likeEtterHverandre = 0;
+			}
+		}
+
+		// Skjekk diagonal /
+		int likeEtterHverandre2 = 0;
+		for (int i = 0; i < board.length; i++) {
+			if (board[i][board.length - 1 - i] == player) {
+				likeEtterHverandre2++;
+			} else {
+				likeEtterHverandre2 = 0;
+			}
+		}
+		if (likeEtterHverandre == TicTacToe.LENGDE_KRAV || likeEtterHverandre2 == TicTacToe.LENGDE_KRAV) {
+			return true;
+		}
+		return false;
 	}
 
 }
