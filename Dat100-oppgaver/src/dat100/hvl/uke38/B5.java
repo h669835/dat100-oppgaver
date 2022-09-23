@@ -21,7 +21,7 @@ public class B5 extends EasyGraphics {
 	public void tegn(int antall_sirkler) {
 		int windowWidth = 500;
 		int windowHeight = 500;
-		int circleWidth = (windowWidth - 50) / (antall_sirkler * 2);
+		int circleWidth = (windowWidth - 25) / (antall_sirkler * 2);
 
 		makeWindow("Målskive", windowWidth, windowHeight);
 		boolean black = false;
