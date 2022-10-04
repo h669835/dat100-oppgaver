@@ -5,8 +5,8 @@ import javax.swing.SwingUtilities;
 public class TicTacToe {
 
 	// size of game board
-	public static int SIZE = 5;
-	public static int LENGDE_KRAV = 3;
+	public static int SIZE = 10;
+	public static int LENGDE_KRAV = 5;
 
 	// character representation of player identity
 	public final static char X_PLAYER_CHR = 'X';

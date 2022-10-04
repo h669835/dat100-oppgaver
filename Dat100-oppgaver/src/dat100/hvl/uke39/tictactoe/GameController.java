@@ -152,6 +152,11 @@ public class GameController {
 		return tempBoard;
 	}
 
+	/**
+	 * @param board
+	 * @param player
+	 * @return true om player har vunnet diagnoalt, false ellers;
+	 */
 	private boolean diagonal(char[][] board, char player) {
 		// Skjekk diagnal \
 		int likeEtterHverandre = 0;
